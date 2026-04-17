@@ -24,7 +24,7 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
             this.raiz = new Nodo<>(dato);
         } else {
             // Si no, iniciamos el add recursivo desde la raíz
-            raiz.addRecursivo(this.raiz, dato);
+            this.raiz.addRecursivo(dato);
         }
     }
 

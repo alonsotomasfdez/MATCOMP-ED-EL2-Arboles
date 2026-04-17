@@ -20,21 +20,24 @@ public class Nodo<T extends Comparable<T>> {
 
     //--------------------------------------------------------------------------------------------------------------------
 
-    protected void addRecursivo(Nodo<T> actual, T dato) {
+    protected void addRecursivo(T nuevoDato) {
 
-        //Si el actual es mayor que el dato, el dato se va a la izquierda
-        if (actual.getDato().compareTo(dato) > 0) {
-            //Comprobamos si existe hijo izquierdo
-            if (actual.izquierda == null) {
-                actual.izquierda.setDato(dato);
-            } else {addRecursivo(izquierda,dato);}}
+        //Si el dato es mayor que el nuevoDato, el dato se va a la izquierda
+        if (this.dato.compareTo(nuevoDato) > 0) {
+            //Si no existe hijo izquierdo, establecemos el nuevo nodo
+            if (this.izquierda == null) {
+                this.izquierda = new Nodo<>(nuevoDato);
+            } else {this.izquierda.addRecursivo(nuevoDato);}}
+
+
 
         //Si el actual es menor que el dato, el dato se va a la derecha
-        else if (actual.getDato().compareTo(dato) < 0){
-            //Comprobamos si existe hijo derecho
-            if (actual.derecha == null) {
-                actual.derecha.setDato(dato);
-            } else {addRecursivo(derecha,dato);}}
+        else if (this.dato.compareTo(nuevoDato) < 0){
+            //Si no existe hijo derecho, establecemos el nuevo nodo
+            if (this.derecha==null){
+                this.derecha = new Nodo<>(nuevoDato);
+            }
+            else {this.derecha.addRecursivo(nuevoDato);}}
 
         }
     }
