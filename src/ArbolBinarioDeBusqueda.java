@@ -1,13 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 
     private Nodo<T> raiz;
 
     public ArbolBinarioDeBusqueda() {
         this.raiz = null;
-    }
-
-    public ArbolBinarioDeBusqueda(Nodo<T> raiz) {
-        this.raiz = raiz;
     }
 
     public Nodo<T> getRaiz() {
@@ -27,6 +27,14 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
             this.raiz.addRecursivo(dato);
         }
     }
-
+    
+    public List<T> getListaOrdenCentral() {
+        List<T> lista = new ArrayList<>(); // Creamos la lista vacía
+        if (this.raiz != null) {
+            // Le pasamos la lista a la raíz para que la rellene por referencia
+            this.raiz.rellenarOrdenCentral(lista);
+        }
+        return lista;
+    }
 
 }
