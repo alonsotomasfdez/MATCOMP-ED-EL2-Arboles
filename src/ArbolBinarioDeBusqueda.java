@@ -27,14 +27,28 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
             this.raiz.addRecursivo(dato);
         }
     }
-    
-    public List<T> getListaOrdenCentral() {
-        List<T> lista = new ArrayList<>(); // Creamos la lista vacía
+
+    public List<T> getListaPreOrden() {
+        List<T> lista = new ArrayList<>();
         if (this.raiz != null) {
-            // Le pasamos la lista a la raíz para que la rellene por referencia
-            this.raiz.rellenarOrdenCentral(lista);
+            this.raiz.rellenarPreOrden(lista);
         }
         return lista;
     }
 
+    public List<T> getListaPostOrden() {
+        List<T> lista = new ArrayList<>();
+        if (this.raiz != null) {
+            this.raiz.rellenarPostOrden(lista);
+        }
+        return lista;
+    }
+
+    public List<T> getListaOrdenCentral() {
+        List<T> lista = new ArrayList<>();
+        if (this.raiz != null) {
+            this.raiz.rellenarOrdenCentral(lista);
+        }
+        return lista;
+    }
 }

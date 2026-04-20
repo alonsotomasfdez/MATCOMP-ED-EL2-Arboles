@@ -40,15 +40,25 @@ public class Nodo<T extends Comparable<T>> {
             else {this.derecha.addRecursivo(nuevoDato);}}
         }
 
+    protected void rellenarPreOrden(List<T> lista) {
+        lista.add(this.dato);
+        if (this.izquierda!=null){this.izquierda.rellenarPreOrden(lista);}
+        if (this.derecha!=null){this.derecha.rellenarPreOrden(lista);}
+    }
+
+    protected void rellenarPostOrden(List<T> lista) {
+        if (this.izquierda!=null){this.izquierda.rellenarPostOrden(lista);}
+        if (this.derecha!=null){this.derecha.rellenarPostOrden(lista);}
+        lista.add(this.dato);
+    }
+
     protected void rellenarOrdenCentral(List<T> lista) {
-        // 1. Si existe hijo izquierdo, le decimos que se rellene a sí mismo primero
-
-        // 2. Visitamos el nodo actual: añadimos this.dato a la lista
-        // Ejemplo: lista.add(this.dato);
-
-        // 3. Si existe hijo derecho, le decimos que se rellene a sí mismo al final
+        if (this.izquierda!=null){this.izquierda.rellenarOrdenCentral(lista);}
+        lista.add(this.dato);
+        if (this.derecha!=null){this.derecha.rellenarOrdenCentral(lista);}
     }
-    }
+
+}
 
 
 
