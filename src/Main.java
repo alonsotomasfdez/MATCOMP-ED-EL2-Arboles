@@ -27,5 +27,11 @@ public class Main {
         System.out.println(arbol2.getListaPreOrden());
         System.out.println(arbol2.getListaPostOrden());
         System.out.println(arbol2.getListaOrdenCentral());
+
+        //Prueba altura usando arbol 2 (que es de altura 4)
+        System.out.println("La altura de arbol2 es "+arbol2.getAltura());
+
+        //Prueba camino al 4 en arbol 2 (que es [8,3,6,4]
+        System.out.println("El camino para llegar al 4 en arbol2 es "+arbol2.getCamino(4));
     }
 }

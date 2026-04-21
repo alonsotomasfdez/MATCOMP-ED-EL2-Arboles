@@ -28,6 +28,7 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
         }
     }
 
+    //Para estos 3 metodos creamos una lista vacia y la enviamos cada una con su metodo
     public List<T> getListaPreOrden() {
         List<T> lista = new ArrayList<>();
         if (this.raiz != null) {
@@ -48,6 +49,21 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
         List<T> lista = new ArrayList<>();
         if (this.raiz != null) {
             this.raiz.rellenarOrdenCentral(lista);
+        }
+        return lista;
+    }
+
+    public int getAltura() {
+        if (this.raiz == null) {
+            return 0; //Árbol vacío
+        }
+        return this.raiz.calcularAltura(); // Delegamos en la raíz
+    }
+
+    public List<T> getCamino(T datoPedido) {
+        List<T> lista = new ArrayList<>();
+        if (this.raiz != null) {
+            this.raiz.calcularCamino(lista, datoPedido);
         }
         return lista;
     }
