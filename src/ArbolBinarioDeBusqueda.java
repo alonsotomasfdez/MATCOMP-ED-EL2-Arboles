@@ -10,13 +10,15 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
         this.raiz = null;
     }
 
+    public ArbolBinarioDeBusqueda(Nodo<T> raiz) {
+        this.raiz = raiz;
+    }
+
     public Nodo<T> getRaiz() {
         return raiz;
     }
 
-    public void setRaiz(Nodo<T> raiz) {
-        this.raiz = raiz;
-    }
+    //------------------------------------------------------------------
 
     public void add(T dato) {
         // Si el árbol está vacío, el nuevo dato es la raíz
@@ -57,14 +59,37 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
         if (this.raiz == null) {
             return 0; //Árbol vacío
         }
-        return this.raiz.calcularAltura(); // Delegamos en la raíz
+        return this.raiz.calcularAltura();
     }
 
     public List<T> getCamino(T datoPedido) {
-        List<T> lista = new ArrayList<>();
+        List<T> lista = new ArrayList<>();//Nueva lista
         if (this.raiz != null) {
-            this.raiz.calcularCamino(lista, datoPedido);
+            this.raiz.calcularCamino(lista, datoPedido); //Si hay nodo, calculamos el camino
         }
         return lista;
+    }
+
+    public int getGrado() {
+        if (this.raiz == null) {
+            return 0; //Árbol vacío
+        }
+        return this.raiz.calcularGrado();
+    }
+
+    public ArbolBinarioDeBusqueda<T> getSubarbolIzquierda(){
+        // Si el árbol está vacío o no tiene hijo izquierdo, devolvemos un árbol vacío
+        if (this.raiz==null || this.raiz.getIzquierda() ==null){
+            return new ArbolBinarioDeBusqueda<>();
+        }
+        return new ArbolBinarioDeBusqueda<>(this.raiz.getIzquierda());
+    }
+
+    public ArbolBinarioDeBusqueda<T> getSubarbolDerecha(){
+        // Si el árbol está vacío o no tiene hijo derecho, devolvemos un árbol vacío
+        if (this.raiz==null || this.raiz.getDerecha() ==null){
+            return new ArbolBinarioDeBusqueda<>();
+        }
+        return new ArbolBinarioDeBusqueda<>(this.raiz.getDerecha());
     }
 }

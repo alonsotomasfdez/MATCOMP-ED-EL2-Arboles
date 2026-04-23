@@ -13,13 +13,8 @@ public class Nodo<T extends Comparable<T>> {
         derecha =null;}
 
     public T getDato() {return dato;}
-    public void setDato(T dato) {this.dato = dato;}
-
     public Nodo<T> getIzquierda() {return izquierda;}
-    public void setIzquierda(Nodo<T> izquierda) {this.izquierda = izquierda;}
-
     public Nodo<T> getDerecha() {return derecha;}
-    public void setDerecha(Nodo<T> derecha) {this.derecha = derecha;}
 
     //--------------------------------------------------------------------------------------------------------------------
     protected void addRecursivo(T nuevoDato) {
@@ -38,6 +33,7 @@ public class Nodo<T extends Comparable<T>> {
                 this.derecha = new Nodo<>(nuevoDato);
             }
             else {this.derecha.addRecursivo(nuevoDato);}}
+        //Hemos tomado que cuando el dato es igual no se añade y ya
         }
 
     //Para estos 3 métodos de manera recursiva vamos accediendo a los hijos
@@ -81,13 +77,34 @@ public class Nodo<T extends Comparable<T>> {
     }
 
     protected void calcularCamino(List<T> lista, T datoPedido) {
-        lista.add(this.dato);
+        lista.add(this.dato); //Nada más entrar al metodo guardamos el dato del nodo donde entramos
+        //Si el numero que buscamos es menor que el del nodo, vamos por izquierda, si no, por derecha
         if (this.dato.compareTo(datoPedido)>0) {
             if (this.izquierda != null) {this.izquierda.calcularCamino(lista, datoPedido);}
         }
         if (this.dato.compareTo(datoPedido)<0) {
             if (this.derecha != null) {this.derecha.calcularCamino(lista, datoPedido);}
         }
+    }
+
+    protected int calcularGrado(){
+        int grado=0;
+
+        //Compruebo si tiene 2 hijos, 2 es el grado máximo, si llego ahí se para
+        if (this.izquierda!=null){grado++;}
+        if (this.derecha!=null){grado++;}
+        if (grado==2){return 2;}
+
+        //Ahora bien si el grado no es 2:
+        //Si el hijo que existe es el izquierdo, compruebo el grado de este
+        int gradoIzquierda=0;
+        if (this.izquierda!=null){gradoIzquierda=this.izquierda.calcularGrado();}
+        //Si el hijo que existe es el derecho, compruebo el grado de este
+        int gradoDerecha=0;
+        if (this.derecha!=null){gradoDerecha=this.derecha.calcularGrado();}
+
+        //Tomo el valor mayor de los 3 valores
+        return Math.max(Math.max(gradoIzquierda,gradoDerecha),grado);
     }
 }
 

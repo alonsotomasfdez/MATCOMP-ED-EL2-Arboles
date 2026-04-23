@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 
 public class Main {
     public static void main(String[] args) {
@@ -28,10 +27,25 @@ public class Main {
         System.out.println(arbol2.getListaPostOrden());
         System.out.println(arbol2.getListaOrdenCentral());
 
-        //Prueba altura usando arbol 2 (que es de altura 4)
+        //Prueba altura usando arbol2 (que es de altura 4)
         System.out.println("La altura de arbol2 es "+arbol2.getAltura());
 
-        //Prueba camino al 4 en arbol 2 (que es [8,3,6,4]
+        //Prueba camino al 4 en arbol2 (que es [8,3,6,4]
         System.out.println("El camino para llegar al 4 en arbol2 es "+arbol2.getCamino(4));
+
+        //Prueba calculo de grado
+        ArbolBinarioDeBusqueda<Integer> arbol3 = new ArbolBinarioDeBusqueda<>();
+        arbol3.add(9);
+        arbol3.add(8);
+        arbol3.add(6);
+        arbol3.add(5);
+        System.out.println("El grado de arbol3 es "+arbol3.getGrado());//Grado 1
+        arbol3.add(7);
+        System.out.println("El grado de arbol3 ahora es "+arbol3.getGrado());//Grado 2
+
+        //Prueba subarboles
+        arbol3.add(10);
+        arbol3.add(11);
+        System.out.println(arbol3.getSubarbolDerecha().getRaiz().getDato());
     }
 }
