@@ -323,4 +323,29 @@ public class GrafoConocimiento {
 
         return resultado;
     }
+
+    //Pregunta 4
+    public ListaSimplementeEnlazada<NodoGrafo> lugaresNacimientoPremiosNobel() {
+
+        ListaSimplementeEnlazada<NodoGrafo> lugares = new ListaSimplementeEnlazada<>();
+
+        MiIterador<Arista> iterador = aristas.getIterador();
+
+        while (iterador.hasNext()) {
+            Arista arista = iterador.next();
+
+            if (arista.getEtiqueta().equals("premio") && arista.getDestino().getValor().equals("premio:Nobel")) {
+
+                NodoGrafo persona = arista.getOrigen();
+
+                NodoGrafo lugarNacimiento = buscarObjeto(persona.getValor(), "nace_en");
+
+                if (lugarNacimiento != null && !lugares.contains(lugarNacimiento)) {
+                    lugares.add(lugarNacimiento);
+                }
+            }
+        }
+
+        return lugares;
+    }
 }

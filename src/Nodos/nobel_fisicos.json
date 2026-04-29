@@ -50,6 +50,12 @@
       "s": "persona:Marie Curie",
       "p": "premio",
       "o": "premio:Nobel"
+    },
+
+    {
+      "s": "persona:Antonio",
+      "p": "nace_en",
+      "o": "lugar:Villarrubia de los Caballeros"
     }
   ]
 }

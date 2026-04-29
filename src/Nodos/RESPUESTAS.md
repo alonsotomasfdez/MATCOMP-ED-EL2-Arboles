@@ -12,3 +12,14 @@ Por tanto, el grafo es disjunto.
 Para esta comprobación se considera el grafo como no dirigido, 
 ya que el objetivo es estudiar si las entidades están conectadas entre sí, 
 independientemente del sentido de la relación RDF.
+
+
+PREGUNTA 4: ¿Qué caminos necesita recorrer para que su respuesta fuese correcta?
+
+Para que la respuesta sea correcta, 
+es necesario seguir primero las relaciones que identifican a las personas que han recibido un premio Nobel, 
+y a partir de esas personas recorrer la relación que indica su lugar de nacimiento.
+
+Es decir, no se debe partir directamente de los lugares, 
+sino primero seleccionar a las personas que cumplen la condición de ser premios Nobel y, 
+después, obtener sus lugares de nacimiento.

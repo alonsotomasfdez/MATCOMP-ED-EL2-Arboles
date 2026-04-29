@@ -51,5 +51,16 @@ public class Main {
 
         System.out.println("Físicos Nobel nacidos en la misma ciudad que Einstein:");
         System.out.println(respuesta);
+
+        System.out.println();
+        System.out.println("===== PREGUNTA 4: LUGARES DE NACIMIENTO DE PREMIOS NOBEL =====");
+
+        GrafoConocimiento grafoPregunta4 = new GrafoConocimiento();
+        grafoPregunta4.cargarDesdeJson("src/Nodos/nobel_fisicos.json");
+
+        ListaSimplementeEnlazada<NodoGrafo> lugares = grafoPregunta4.lugaresNacimientoPremiosNobel();
+
+        System.out.println("Lugares de nacimiento de los premios Nobel:");
+        System.out.println(lugares);
     }
 }
