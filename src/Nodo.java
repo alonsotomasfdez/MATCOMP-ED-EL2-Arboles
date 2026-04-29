@@ -64,15 +64,18 @@ public class Nodo<T extends Comparable<T>> {
     }
 
     protected int calcularAltura() {
-        int alturaIzquierda = 0;
-        int alturaDerecha = 0;
 
-        //Si hay hijo izquierdo, calculamos la altura de esa rama
-        if (this.izquierda != null) {alturaIzquierda = this.izquierda.calcularAltura();}
-        //Si hay hijo derecho, calculamos la altura de esa rama
-        if (this.derecha != null) {alturaDerecha = this.derecha.calcularAltura();}
+        int alturaIzquierda = -1;
+        int alturaDerecha = -1;
 
-        //Cogemos la rama con más altura y sumamos 1 por el nodo actual
+        if (this.izquierda != null) {
+            alturaIzquierda = this.izquierda.calcularAltura();
+        }
+
+        if (this.derecha != null) {
+            alturaDerecha = this.derecha.calcularAltura();
+        }
+
         return Math.max(alturaIzquierda, alturaDerecha) + 1;
     }
 

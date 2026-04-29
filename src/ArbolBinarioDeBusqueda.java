@@ -57,7 +57,7 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 
     public int getAltura() {
         if (this.raiz == null) {
-            return 0; //Árbol vacío
+            return -1;
         }
         return this.raiz.calcularAltura();
     }

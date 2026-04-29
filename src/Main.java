@@ -70,10 +70,7 @@ public class Main {
         arbol4.add(50);
         System.out.println("arbol4 es homogéneo: "+arbol4.isArbolHomogeneo());//False
 
-        */
-
         //prueba getCamino
-        //test1
         ArbolBinarioDeBusqueda<Integer> arbol = new ArbolBinarioDeBusqueda<>();
 
         arbol.add(8);
@@ -94,5 +91,18 @@ public class Main {
 
         ArbolBinarioDeBusqueda<Integer> arbolVacio = new ArbolBinarioDeBusqueda<>();
         System.out.println("Camino en árbol vacío: " + arbolVacio.getCamino(5));
+
+
+         */
+        //getAltura
+        ArbolBinarioDeBusqueda<Integer> arbol = new ArbolBinarioDeBusqueda<>();
+
+        arbol.add(10);
+        arbol.add(5);
+        arbol.add(20);
+
+        System.out.println(arbol.getAltura());
+
+        System.out.println(new ArbolBinarioDeBusqueda<>().getAltura());
     }
 }
