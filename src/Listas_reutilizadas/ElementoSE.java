@@ -1,0 +1,13 @@
+package Listas_reutilizadas;
+
+public class ElementoSE<T> {
+
+    T dato;
+    ElementoSE<T> siguiente;
+
+    public ElementoSE(T dato) {
+        this.dato = dato;
+        this.siguiente = null;
+    }
+//ESTO REPRESENTA CADA NODO.
+}
