@@ -106,6 +106,37 @@ public class Nodo<T extends Comparable<T>> {
         //Tomo el valor mayor de los 3 valores
         return Math.max(Math.max(gradoIzquierda,gradoDerecha),grado);
     }
+
+    protected void comprobarNivel(int nivelPedido, int nivelActual, Lista<T> lista){
+        //Caso base, caundo llegamos al nivel pedido
+        if (nivelPedido==nivelActual){
+            lista.add(this.dato);
+            return;
+        }
+
+        if (this.izquierda!=null){
+            this.izquierda.comprobarNivel(nivelPedido,nivelActual+1,lista);
+        }
+
+        if (this.derecha!=null){
+            this.derecha.comprobarNivel(nivelPedido,nivelActual+1,lista);
+        }
+
+    }
+
+    protected boolean comprobarHomogeneo(){
+        int hijos=0;
+        if (this.izquierda!=null){hijos++;}
+        if (this.derecha!=null){hijos++;}
+
+        //Si solo tiene un hijo ya devolvemos el false
+        if (hijos==1){return false;}
+        //Las hojas no tienen hijos (son las unicas que no son grado 2)
+        if (hijos==0){return true;}
+        //Ahora bien, con dos hijos, comprobamos cada una de las ramas
+        return this.derecha.comprobarHomogeneo() && this.izquierda.comprobarHomogeneo();
+
+    }
 }
 
 

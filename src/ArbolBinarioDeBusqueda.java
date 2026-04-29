@@ -92,4 +92,20 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
         }
         return new ArbolBinarioDeBusqueda<>(this.raiz.getDerecha());
     }
+
+    public Lista<T> getListaDatosNivel(int nivelPedido) {
+        Lista<T> lista = new ListaSimplementeEnlazada<>();
+        if (this.raiz != null && nivelPedido > 0) {
+            //Consideramos la raíz en el nivel 1
+            this.raiz.comprobarNivel(nivelPedido, 1, lista);
+        }
+        return lista;
+    }
+
+    public boolean isArbolHomogeneo(){
+        if (this.raiz==null){
+            return true;
+        }
+        return this.raiz.comprobarHomogeneo();
+    }
 }

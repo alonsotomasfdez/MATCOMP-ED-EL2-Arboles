@@ -47,5 +47,26 @@ public class Main {
         arbol3.add(10);
         arbol3.add(11);
         System.out.println(arbol3.getSubarbolDerecha().getRaiz().getDato());
+        System.out.println(arbol3.getSubarbolIzquierda().getRaiz().getDato());
+
+        //Prueba getListaNivelDato
+        ArbolBinarioDeBusqueda<Integer> arbol4 = new ArbolBinarioDeBusqueda<>();
+        arbol4.add(19);//Nivel 1
+        arbol4.add(13);//Nivel 2
+        arbol4.add(15);//Nivel 3
+        arbol4.add(5);//Nivel 3
+        arbol4.add(25);//Nivel 2
+        arbol4.add(21);//Nivel 3
+        arbol4.add(30);//Nivel 3
+        System.out.println(arbol4.getListaDatosNivel(2));
+        System.out.println(arbol4.getListaDatosNivel(3));
+
+        //Prueba homogeneo
+        System.out.println("arbol4 es homogéneo: "+arbol4.isArbolHomogeneo());//True
+        arbol4.add(1);
+        arbol4.add(7);
+        System.out.println("arbol4 es homogéneo: "+arbol4.isArbolHomogeneo());//True
+        arbol4.add(50);
+        System.out.println("arbol4 es homogéneo: "+arbol4.isArbolHomogeneo());//False
     }
 }
