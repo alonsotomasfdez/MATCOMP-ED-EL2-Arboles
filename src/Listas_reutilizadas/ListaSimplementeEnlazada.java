@@ -267,4 +267,30 @@ public class ListaSimplementeEnlazada<T extends Comparable<T>> implements Lista<
             actual = actual.siguiente;
         }
     }
+
+    public void removeLast() {
+
+        // Caso 1: lista vacía
+        if (isEmpty()) {
+            return;
+        }
+
+        // Caso 2: un solo elemento
+        if (primero.siguiente == null) {
+            primero = null;
+            size--;
+            return;
+        }
+
+        // Caso 3: varios elementos → llegar al penúltimo
+        ElementoSE<T> actual = primero;
+
+        while (actual.siguiente.siguiente != null) {
+            actual = actual.siguiente;
+        }
+
+        // eliminar el último
+        actual.siguiente = null;
+        size--;
+    }
 }

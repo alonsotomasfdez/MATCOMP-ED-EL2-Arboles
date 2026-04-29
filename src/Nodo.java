@@ -1,5 +1,5 @@
 import Listas_reutilizadas.Lista;
-
+import Listas_reutilizadas.ListaSimplementeEnlazada;
 
 public class Nodo<T extends Comparable<T>> {
 
@@ -76,15 +76,36 @@ public class Nodo<T extends Comparable<T>> {
         return Math.max(alturaIzquierda, alturaDerecha) + 1;
     }
 
-    protected void calcularCamino(Lista<T> lista, T datoPedido) {
-        lista.add(this.dato); //Nada más entrar al metodo guardamos el dato del nodo donde entramos
-        //Si el numero que buscamos es menor que el del nodo, vamos por izquierda, si no, por derecha
-        if (this.dato.compareTo(datoPedido)>0) {
-            if (this.izquierda != null) {this.izquierda.calcularCamino(lista, datoPedido);}
+    protected boolean calcularCamino(Lista<T> lista, T datoPedido) {
+
+        // Añadimos el nodo actual al camino
+        lista.add(this.dato);
+
+        int comparacion = this.dato.compareTo(datoPedido);
+
+        // Caso 1: hemos encontrado el dato
+        if (comparacion == 0) {
+            return true;
         }
-        if (this.dato.compareTo(datoPedido)<0) {
-            if (this.derecha != null) {this.derecha.calcularCamino(lista, datoPedido);}
+
+        // Caso 2: buscamos por la izquierda
+        if (comparacion > 0 && this.izquierda != null) {
+            if (this.izquierda.calcularCamino(lista, datoPedido)) {
+                return true;
+            }
         }
+
+        // Caso 3: buscamos por la derecha
+        if (comparacion < 0 && this.derecha != null) {
+            if (this.derecha.calcularCamino(lista, datoPedido)) {
+                return true;
+            }
+        }
+
+        // Caso 4: no está en este camino → eliminamos el nodo añadido
+        ((ListaSimplementeEnlazada<T>) lista).removeLast();
+
+        return false;
     }
 
     protected int calcularGrado(){
@@ -138,6 +159,3 @@ public class Nodo<T extends Comparable<T>> {
 
     }
 }
-
-
-

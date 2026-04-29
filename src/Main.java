@@ -3,6 +3,7 @@ public class Main {
     public static void main(String[] args) {
 
         //Prueba add()
+        /*
         ArbolBinarioDeBusqueda<Integer> arbol1 = new ArbolBinarioDeBusqueda<>();
         arbol1.add(10);
         arbol1.add(2);
@@ -68,5 +69,30 @@ public class Main {
         System.out.println("arbol4 es homogéneo: "+arbol4.isArbolHomogeneo());//True
         arbol4.add(50);
         System.out.println("arbol4 es homogéneo: "+arbol4.isArbolHomogeneo());//False
+
+        */
+
+        //prueba getCamino
+        //test1
+        ArbolBinarioDeBusqueda<Integer> arbol = new ArbolBinarioDeBusqueda<>();
+
+        arbol.add(8);
+        arbol.add(3);
+        arbol.add(10);
+        arbol.add(1);
+        arbol.add(6);
+        arbol.add(4);
+        arbol.add(7);
+
+        System.out.println("Camino a 4: " + arbol.getCamino(4));
+
+        System.out.println("Camino a 8: " + arbol.getCamino(8));
+
+        System.out.println("Camino a 7: " + arbol.getCamino(7));
+
+        System.out.println("Camino a 99: " + arbol.getCamino(99));
+
+        ArbolBinarioDeBusqueda<Integer> arbolVacio = new ArbolBinarioDeBusqueda<>();
+        System.out.println("Camino en árbol vacío: " + arbolVacio.getCamino(5));
     }
 }

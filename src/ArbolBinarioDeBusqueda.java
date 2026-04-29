@@ -64,9 +64,15 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 
     public Lista<T> getCamino(T datoPedido) {
         Lista<T> lista = new ListaSimplementeEnlazada<>();
+
         if (this.raiz != null) {
-            this.raiz.calcularCamino(lista, datoPedido);
+            boolean encontrado = this.raiz.calcularCamino(lista, datoPedido);
+
+            if (!encontrado) {
+                return new ListaSimplementeEnlazada<>();
+            }
         }
+
         return lista;
     }
 
