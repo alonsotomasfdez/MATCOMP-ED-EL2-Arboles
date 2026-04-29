@@ -1,0 +1,55 @@
+{
+  "tipos": [
+    "persona",
+    "lugar",
+    "premio",
+    "profesion"
+  ],
+  "tripletas": [
+    {
+      "s": "persona:Albert Einstein",
+      "p": "nace_en",
+      "o": "lugar:Ulm"
+    },
+    {
+      "s": "persona:Albert Einstein",
+      "p": "profesion",
+      "o": "profesion:Fisico"
+    },
+    {
+      "s": "persona:Albert Einstein",
+      "p": "premio",
+      "o": "premio:Nobel"
+    },
+    {
+      "s": "persona:Max Born",
+      "p": "nace_en",
+      "o": "lugar:Ulm"
+    },
+    {
+      "s": "persona:Max Born",
+      "p": "profesion",
+      "o": "profesion:Fisico"
+    },
+    {
+      "s": "persona:Max Born",
+      "p": "premio",
+      "o": "premio:Nobel"
+    },
+    {
+      "s": "persona:Marie Curie",
+      "p": "nace_en",
+      "o": "lugar:Varsovia"
+    },
+    {
+      "s": "persona:Marie Curie",
+      "p": "profesion",
+      "o": "profesion:Fisico"
+    },
+    {
+      "s": "persona:Marie Curie",
+      "p": "premio",
+      "o": "premio:Nobel"
+    }
+  ]
+}

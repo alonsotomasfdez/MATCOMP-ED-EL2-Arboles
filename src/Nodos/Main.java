@@ -31,7 +31,7 @@ public class Main {
         System.out.println(grafoNoDisjunto.esDisjunto()); // false
 
 
-        System.out.println();
+
         System.out.println("===== PREGUNTA 2: GRAFO DISJUNTO DESDE JSON =====");
 
         GrafoConocimiento grafoDisjunto = new GrafoConocimiento();
@@ -39,5 +39,17 @@ public class Main {
 
         System.out.println("¿El grafo disjunto es disjunto?");
         System.out.println(grafoDisjunto.esDisjunto()); // true
+
+        System.out.println();
+        System.out.println("===== PREGUNTA 3: FISICO NOBEL NACIDO COMO EINSTEIN =====");
+
+        GrafoConocimiento grafoNobel = new GrafoConocimiento();
+        grafoNobel.cargarDesdeJson("src/Nodos/nobel_fisicos.json");
+
+        ListaSimplementeEnlazada<NodoGrafo> respuesta =
+                grafoNobel.fisicosNobelNacidosComoEinstein();
+
+        System.out.println("Físicos Nobel nacidos en la misma ciudad que Einstein:");
+        System.out.println(respuesta);
     }
 }

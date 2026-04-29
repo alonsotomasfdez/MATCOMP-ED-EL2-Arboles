@@ -255,4 +255,72 @@ public class GrafoConocimiento {
 
         return valor;
     }
+
+    //Pregunta 3
+
+    private boolean tieneRelacion(String sujeto, String predicado, String objeto) {
+
+        MiIterador<Arista> iterador = aristas.getIterador();
+
+        while (iterador.hasNext()) {
+            Arista arista = iterador.next();
+
+            if (arista.getOrigen().getValor().equals(sujeto)
+                    && arista.getEtiqueta().equals(predicado)
+                    && arista.getDestino().getValor().equals(objeto)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private NodoGrafo buscarObjeto(String sujeto, String predicado) {
+
+        MiIterador<Arista> iterador = aristas.getIterador();
+
+        while (iterador.hasNext()) {
+            Arista arista = iterador.next();
+
+            if (arista.getOrigen().getValor().equals(sujeto) && arista.getEtiqueta().equals(predicado)) {
+                return arista.getDestino();
+            }
+        }
+
+        return null;
+    }
+    //Metodo en si que responde a la pregunta 3
+    public ListaSimplementeEnlazada<NodoGrafo> fisicosNobelNacidosComoEinstein() {//devuelve una lista de nodos del grafo
+
+        ListaSimplementeEnlazada<NodoGrafo> resultado = new ListaSimplementeEnlazada<>();
+
+        NodoGrafo ciudadEinstein = buscarObjeto("persona:Albert Einstein", "nace_en");
+
+        if (ciudadEinstein == null) {
+            return resultado;
+        }
+
+        MiIterador<Arista> iterador = aristas.getIterador();
+
+        while (iterador.hasNext()) {
+            Arista arista = iterador.next();
+
+            if (arista.getEtiqueta().equals("nace_en") && arista.getDestino().equals(ciudadEinstein)) {//Comprobamos que hayan nacido en el mismo sitio
+
+                NodoGrafo persona = arista.getOrigen();// convierte el origen en una persona nacida en la misma ciudad que Einstein
+
+                if (!persona.getValor().equals("persona:Albert Einstein") && tieneRelacion(persona.getValor()
+                        , "profesion", "profesion:Fisico") && tieneRelacion(persona.getValor()
+                        , "premio", "premio:Nobel")) {
+                    //Excluimos al propio Einstein y comprobamos la relacion
+
+                    if (!resultado.contains(persona)) {//Antes de añadirlo comprobamos que no este ya en la lista de resultados
+                        resultado.add(persona);
+                    }
+                }
+            }
+        }
+
+        return resultado;
+    }
 }

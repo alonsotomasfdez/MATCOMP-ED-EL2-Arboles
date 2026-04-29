@@ -30,4 +30,7 @@ public class Arista implements Comparable<Arista> {
 
         return this.etiqueta.compareTo(otra.etiqueta);
     }
+    public String getEtiqueta() {
+        return etiqueta;
+    }
 }
