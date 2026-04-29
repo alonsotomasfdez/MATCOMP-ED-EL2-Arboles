@@ -3,6 +3,8 @@ import Listas_reutilizadas.ListaSimplementeEnlazada;
 import Listas_reutilizadas.MiIterador;
 import Listas_reutilizadas.PilaLista;
 import Listas_reutilizadas.ColaLista;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 
 public class GrafoConocimiento {
@@ -200,5 +202,57 @@ public class GrafoConocimiento {
         }
 
         return visitados.getSize() != nodos.getSize();
+    }
+
+    public void cargarDesdeJson(String ruta) {
+
+        String sujeto = null;
+        String predicado = null;
+        String objeto = null;
+
+        try {
+            BufferedReader lector = new BufferedReader(new FileReader(ruta));
+            String linea;
+
+            while ((linea = lector.readLine()) != null) {
+                linea = linea.trim();
+
+                if (linea.startsWith("\"s\"")) {
+                    sujeto = extraerValorJson(linea);
+                }
+
+                else if (linea.startsWith("\"p\"")) {
+                    predicado = extraerValorJson(linea);
+                }
+
+                else if (linea.startsWith("\"o\"")) {
+                    objeto = extraerValorJson(linea);
+                }
+
+                if (sujeto != null && predicado != null && objeto != null) {
+                    agregarArista(sujeto, predicado, objeto);
+
+                    sujeto = null;
+                    predicado = null;
+                    objeto = null;
+                }
+            }
+
+            lector.close();
+
+        } catch (Exception e) {
+            System.out.println("Error al leer el archivo: " + ruta);
+            e.printStackTrace();
+        }
+    }
+
+    private String extraerValorJson(String linea) {
+        String[] partes = linea.split(": ", 2);//Divide la línea en dos partes, usando como separador ": "
+        String valor = partes[1];//Nos quedamos con la segunda parte del texto.
+
+        valor = valor.replace(",", "");//quitas la coma del final
+        valor = valor.replace("\"", "");//quitas comillas dobles
+
+        return valor;
     }
 }
