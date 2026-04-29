@@ -1,4 +1,4 @@
-import java.util.List;
+import Listas_reutilizadas.Lista;
 
 
 public class Nodo<T extends Comparable<T>> {
@@ -40,7 +40,7 @@ public class Nodo<T extends Comparable<T>> {
     //Como cada metodo de relleno es distinto se modifica el orden de las instrucciones
 
     //El pre orden es raíz-izquierda-derecha
-    protected void rellenarPreOrden(List<T> lista) {
+    protected void rellenarPreOrden(Lista<T> lista) {
         //Añadimos el dato de la raíz
         lista.add(this.dato);
         //Si hay hijo izquierdo, lo tomamos como nueva raíz y volvemos a llamar al metodo
@@ -50,14 +50,14 @@ public class Nodo<T extends Comparable<T>> {
     }
 
     //El post orden es izquierda-derecha-raíz
-    protected void rellenarPostOrden(List<T> lista) {
+    protected void rellenarPostOrden(Lista<T> lista) {
         if (this.izquierda!=null){this.izquierda.rellenarPostOrden(lista);}
         if (this.derecha!=null){this.derecha.rellenarPostOrden(lista);}
         lista.add(this.dato);
     }
 
     //El orden central es izquierda-raíz-derecha (devuelve la lista ordenada de menor a mayor)
-    protected void rellenarOrdenCentral(List<T> lista) {
+    protected void rellenarOrdenCentral(Lista<T> lista) {
         if (this.izquierda!=null){this.izquierda.rellenarOrdenCentral(lista);}
         lista.add(this.dato);
         if (this.derecha!=null){this.derecha.rellenarOrdenCentral(lista);}
@@ -76,7 +76,7 @@ public class Nodo<T extends Comparable<T>> {
         return Math.max(alturaIzquierda, alturaDerecha) + 1;
     }
 
-    protected void calcularCamino(List<T> lista, T datoPedido) {
+    protected void calcularCamino(Lista<T> lista, T datoPedido) {
         lista.add(this.dato); //Nada más entrar al metodo guardamos el dato del nodo donde entramos
         //Si el numero que buscamos es menor que el del nodo, vamos por izquierda, si no, por derecha
         if (this.dato.compareTo(datoPedido)>0) {
