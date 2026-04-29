@@ -15,7 +15,7 @@ public class GrafoConocimiento {
         aristas = new ListaSimplementeEnlazada<>();
     }
 
-    public void agregarNodo(String valor) {
+    public void agregarNodo(String valor) {//Añade un nodo al grafo solo si no existe ya.
         NodoGrafo nuevo = new NodoGrafo(valor);
 
         if (!nodos.contains(nuevo)) {
@@ -23,7 +23,7 @@ public class GrafoConocimiento {
         }
     }
 
-    public void agregarArista(String origen, String etiqueta, String destino) {
+    public void agregarArista(String origen, String etiqueta, String destino) {//Añade una relación entre dos nodos
         agregarNodo(origen);
         agregarNodo(destino);
 
@@ -37,7 +37,7 @@ public class GrafoConocimiento {
         }
     }
 
-    private NodoGrafo buscarNodo(String valor) {
+    private NodoGrafo buscarNodo(String valor) {//Busca dentro de la lista de nodos uno con ese valor
         MiIterador<NodoGrafo> iterador = nodos.getIterador();
 
         while (iterador.hasNext()) {
@@ -51,7 +51,7 @@ public class GrafoConocimiento {
         return null;
     }
 
-    private ListaSimplementeEnlazada<NodoGrafo> obtenerVecinos(NodoGrafo nodo) {
+    private ListaSimplementeEnlazada<NodoGrafo> obtenerVecinos(NodoGrafo nodo) {//Busca todos los nodos a los que puedo llegar desde un nodo concreto
         ListaSimplementeEnlazada<NodoGrafo> vecinos = new ListaSimplementeEnlazada<>();
 
         MiIterador<Arista> iterador = aristas.getIterador();
@@ -67,7 +67,7 @@ public class GrafoConocimiento {
         return vecinos;
     }
 
-    public ListaSimplementeEnlazada<NodoGrafo> caminoMinimo(String origen, String destino) {
+    public ListaSimplementeEnlazada<NodoGrafo> caminoMinimo(String origen, String destino) {//La respuesta de la pregunta 1
         NodoGrafo nodoOrigen = buscarNodo(origen);
         NodoGrafo nodoDestino = buscarNodo(destino);
 
@@ -107,7 +107,7 @@ public class GrafoConocimiento {
         return null;
     }
 
-    private ListaSimplementeEnlazada<NodoGrafo> reconstruirCamino(
+    private ListaSimplementeEnlazada<NodoGrafo> reconstruirCamino(//Cuando BFS llega al destino, el camino está guardado al revés mediante padres, uso entonces una pila para darle la vuelta y devolver
             ListaSimplementeEnlazada<Padre> padres,
             NodoGrafo destino) {
 
@@ -140,5 +140,65 @@ public class GrafoConocimiento {
         }
 
         return null;
+    }
+
+
+    //Pregunta 2:
+
+    //metodo auxiliar:
+    private ListaSimplementeEnlazada<NodoGrafo> obtenerVecinosNoDirigido(NodoGrafo nodo) {
+
+        ListaSimplementeEnlazada<NodoGrafo> vecinos = new ListaSimplementeEnlazada<>();
+
+        MiIterador<Arista> iterador = aristas.getIterador();
+
+        while (iterador.hasNext()) {
+            Arista arista = iterador.next();
+
+            if (arista.getOrigen().equals(nodo)) {
+                vecinos.add(arista.getDestino());
+            }
+
+            if (arista.getDestino().equals(nodo)) {
+                vecinos.add(arista.getOrigen());
+            }
+        }
+
+        return vecinos;
+    }
+
+    //Pregunta en si, para saber si es disjunto o no.
+    public boolean esDisjunto() {
+
+        if (nodos.isEmpty()) {
+            return false;
+        }
+
+        ListaSimplementeEnlazada<NodoGrafo> visitados = new ListaSimplementeEnlazada<>();
+        ColaLista<NodoGrafo> cola = new ColaLista<>();
+
+        NodoGrafo primerNodo = nodos.get_posicion(0);
+
+        cola.enqueue(primerNodo);
+        visitados.add(primerNodo);
+
+        while (!cola.isEmpty()) {
+
+            NodoGrafo actual = cola.dequeue();
+
+            ListaSimplementeEnlazada<NodoGrafo> vecinos = obtenerVecinosNoDirigido(actual);
+            MiIterador<NodoGrafo> iterador = vecinos.getIterador();
+
+            while (iterador.hasNext()) {
+                NodoGrafo vecino = iterador.next();
+
+                if (!visitados.contains(vecino)) {
+                    visitados.add(vecino);
+                    cola.enqueue(vecino);
+                }
+            }
+        }
+
+        return visitados.getSize() != nodos.getSize();
     }
 }

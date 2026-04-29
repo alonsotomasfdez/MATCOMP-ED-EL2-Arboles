@@ -1,0 +1,24 @@
+{
+  "tipos": [
+    "persona",
+    "lugar",
+    "premio"
+  ],
+  "tripletas": [
+    {
+      "s": "persona:Albert Einstein",
+      "p": "nace_en",
+      "o": "lugar:Ulm"
+    },
+    {
+      "s": "lugar:Ulm",
+      "p": "esta_en",
+      "o": "lugar:Alemania"
+    },
+    {
+      "s": "persona:Max Born",
+      "p": "nace_en",
+      "o": "lugar:Ulm"
+    }
+  ]
+}
