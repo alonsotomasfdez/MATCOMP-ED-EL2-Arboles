@@ -100,11 +100,13 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     }
 
     public Lista<T> getListaDatosNivel(int nivelPedido) {
+
         Lista<T> lista = new ListaSimplementeEnlazada<>();
-        if (this.raiz != null && nivelPedido > 0) {
-            //Consideramos la raíz en el nivel 1
-            this.raiz.comprobarNivel(nivelPedido, 1, lista);
+
+        if (this.raiz != null && nivelPedido >= 0) {
+            this.raiz.comprobarNivel(nivelPedido, 0, lista);
         }
+
         return lista;
     }
 
