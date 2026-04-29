@@ -34,3 +34,21 @@ Los tipos de nodos son:
 - Profesión: representa la actividad profesional que realiza una persona, como físico.
 
 Estos tipos permiten estructurar la información y establecer relaciones entre las distintas entidades del grafo.
+
+PREGUNTA 6: ¿Qué es una ontología? ¿Qué relación tiene con los grafos? 
+¿Podríamos crear una ontología para nuestro problema? ¿Qué haríamos con ella?
+
+Una ontología es una forma de organizar y definir el conocimiento de un dominio, 
+estableciendo los tipos de entidades que existen y las relaciones que pueden darse entre ellas.
+
+En el contexto de los grafos, una ontología sirve como base para estructurar la información, 
+ya que define qué tipos de nodos hay (por ejemplo, persona, lugar o premio) y qué relaciones pueden existir entre ellos 
+(como nace_en o premio). El grafo sería la representación concreta de esa ontología aplicada a datos reales.
+
+En este problema sí es posible crear una ontología. 
+En ella se definirían las entidades principales, como personas, lugares, premios y profesiones, 
+así como las relaciones entre ellas.
+
+Esta ontología permitiría dar coherencia al grafo, 
+evitar inconsistencias y facilitar la realización de consultas, 
+ya que se sabría de antemano cómo están organizados los datos y qué tipo de relaciones pueden existir entre ellos.
