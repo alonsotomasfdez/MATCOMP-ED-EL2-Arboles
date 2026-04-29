@@ -1,5 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
+import Listas_reutilizadas.Lista;
+import Listas_reutilizadas.ListaSimplementeEnlazada;
 
 
 public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
@@ -31,24 +31,24 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
     }
 
     //Para estos 3 metodos creamos una lista vacia y la enviamos cada una con su metodo
-    public List<T> getListaPreOrden() {
-        List<T> lista = new ArrayList<>();
+    public Lista<T> getListaPreOrden() {
+        Lista<T> lista = new ListaSimplementeEnlazada<>();
         if (this.raiz != null) {
             this.raiz.rellenarPreOrden(lista);
         }
         return lista;
     }
 
-    public List<T> getListaPostOrden() {
-        List<T> lista = new ArrayList<>();
+    public Lista<T> getListaPostOrden() {
+        Lista<T> lista = new ListaSimplementeEnlazada<>();
         if (this.raiz != null) {
             this.raiz.rellenarPostOrden(lista);
         }
         return lista;
     }
 
-    public List<T> getListaOrdenCentral() {
-        List<T> lista = new ArrayList<>();
+    public Lista<T> getListaOrdenCentral() {
+        Lista<T> lista = new ListaSimplementeEnlazada<>();
         if (this.raiz != null) {
             this.raiz.rellenarOrdenCentral(lista);
         }
@@ -62,10 +62,10 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
         return this.raiz.calcularAltura();
     }
 
-    public List<T> getCamino(T datoPedido) {
-        List<T> lista = new ArrayList<>();//Nueva lista
+    public Lista<T> getCamino(T datoPedido) {
+        Lista<T> lista = new ListaSimplementeEnlazada<>();
         if (this.raiz != null) {
-            this.raiz.calcularCamino(lista, datoPedido); //Si hay nodo, calculamos el camino
+            this.raiz.calcularCamino(lista, datoPedido);
         }
         return lista;
     }
@@ -91,5 +91,21 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
             return new ArbolBinarioDeBusqueda<>();
         }
         return new ArbolBinarioDeBusqueda<>(this.raiz.getDerecha());
+    }
+
+    public Lista<T> getListaDatosNivel(int nivelPedido) {
+        Lista<T> lista = new ListaSimplementeEnlazada<>();
+        if (this.raiz != null && nivelPedido > 0) {
+            //Consideramos la raíz en el nivel 1
+            this.raiz.comprobarNivel(nivelPedido, 1, lista);
+        }
+        return lista;
+    }
+
+    public boolean isArbolHomogeneo(){
+        if (this.raiz==null){
+            return true;
+        }
+        return this.raiz.comprobarHomogeneo();
     }
 }
