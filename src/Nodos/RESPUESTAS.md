@@ -23,3 +23,14 @@ y a partir de esas personas recorrer la relación que indica su lugar de nacimie
 Es decir, no se debe partir directamente de los lugares, 
 sino primero seleccionar a las personas que cumplen la condición de ser premios Nobel y, 
 después, obtener sus lugares de nacimiento.
+
+PREGUNTA 5: ¿Qué tipos de nodos tiene el grafo?
+
+El grafo está formado por distintos tipos de nodos que representan entidades del dominio del problema.
+Los tipos de nodos son:
+- Persona: representa individuos, como científicos o premios Nobel.
+- Lugar: representa ciudades .
+- Premio: representa distinciones, como el premio Nobel.
+- Profesión: representa la actividad profesional que realiza una persona, como físico.
+
+Estos tipos permiten estructurar la información y establecer relaciones entre las distintas entidades del grafo.
