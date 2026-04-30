@@ -94,48 +94,26 @@ public class Main {
 
 
          */
-        //comprobar cambios niveles
+        // isArbolCompleto
         ArbolBinarioDeBusqueda<Integer> arbol = new ArbolBinarioDeBusqueda<>();
 
-        // Construimos un árbol conocido
-        arbol.add(8);
-        arbol.add(3);
+        // Árbol completo
         arbol.add(10);
+        arbol.add(5);
+        arbol.add(20);
         arbol.add(1);
         arbol.add(6);
-        arbol.add(14);
-        arbol.add(4);
-        arbol.add(7);
+        arbol.add(15);
+        arbol.add(30);
 
-        // -----------------------------
-        // NIVEL 0 (RAÍZ)
-        // -----------------------------
-        System.out.println("Nivel 0: " + arbol.getListaDatosNivel(0));
-        // esperado: [8]
+        System.out.println("¿Es completo? " + arbol.isArbolCompleto());
+        // esperado: true
 
-        // -----------------------------
-        // NIVEL 1
-        // -----------------------------
-        System.out.println("Nivel 1: " + arbol.getListaDatosNivel(1));
-        // esperado: [3, 10]
+        // Ahora lo rompemos
+        arbol.add(0);
 
-        // -----------------------------
-        // NIVEL 2
-        // -----------------------------
-        System.out.println("Nivel 2: " + arbol.getListaDatosNivel(2));
-        // esperado: [1, 6, 14]
-
-        // -----------------------------
-        // NIVEL 3
-        // -----------------------------
-        System.out.println("Nivel 3: " + arbol.getListaDatosNivel(3));
-        // esperado: [4, 7]
-
-        // -----------------------------
-        // NIVEL FUERA DE RANGO
-        // -----------------------------
-        System.out.println("Nivel 4: " + arbol.getListaDatosNivel(4));
-        // esperado: []
+        System.out.println("¿Es completo después? " + arbol.isArbolCompleto());
+        // esperado: false
     }
 
 

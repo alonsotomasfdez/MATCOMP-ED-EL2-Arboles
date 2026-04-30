@@ -161,4 +161,25 @@ public class Nodo<T extends Comparable<T>> {
         return this.derecha.comprobarHomogeneo() && this.izquierda.comprobarHomogeneo();
 
     }
+
+    protected boolean comprobarCompleto(int alturaArbol, int nivelActual) {
+
+        // Si es hoja → comprobamos nivel
+        if (this.izquierda == null && this.derecha == null) {
+            return nivelActual == alturaArbol;
+        }
+
+        boolean izquierdaOk = true;
+        boolean derechaOk = true;
+
+        if (this.izquierda != null) {
+            izquierdaOk = this.izquierda.comprobarCompleto(alturaArbol, nivelActual + 1);
+        }
+
+        if (this.derecha != null) {
+            derechaOk = this.derecha.comprobarCompleto(alturaArbol, nivelActual + 1);
+        }
+
+        return izquierdaOk && derechaOk;
+    }
 }

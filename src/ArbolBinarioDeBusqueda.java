@@ -116,4 +116,15 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
         }
         return this.raiz.comprobarHomogeneo();
     }
+
+    public boolean isArbolCompleto() {
+
+        if (this.raiz == null) {
+            return true;
+        }
+
+        int altura = this.getAltura();
+
+        return this.raiz.comprobarCompleto(altura, 0);
+    }
 }
