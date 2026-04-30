@@ -1,6 +1,6 @@
 package Listas_reutilizadas;
 
-public interface Cola<T extends Comparable<T>> {
+public interface Cola<T> {
     void enqueue(T dato);
 
     T dequeue();
@@ -20,10 +20,6 @@ public interface Cola<T extends Comparable<T>> {
     MiIterador<T> getIterador();
 
     Cola<T> copy();
-
-    T max();
-
-    T min();
 
     int count(T dato);
 

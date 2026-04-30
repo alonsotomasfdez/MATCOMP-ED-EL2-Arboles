@@ -95,62 +95,71 @@ public class Main {
 
          */
         // isArbolCompleto
-        // -----------------------------
-        // CASO 1: árbol casi completo (DEBE DAR TRUE)
-        // -----------------------------
-        ArbolBinarioDeBusqueda<Integer> arbol1 = new ArbolBinarioDeBusqueda<>();
+        System.out.println("===== TEST ARBOLES =====");
 
-        arbol1.add(10);
-        arbol1.add(5);
-        arbol1.add(20);
-        arbol1.add(1);
-        arbol1.add(6);
-        arbol1.add(15);
+        // =============================
+        // 1. ÁRBOL COMPLETO PERFECTO
+        // =============================
+        ArbolBinarioDeBusqueda<Integer> completo = new ArbolBinarioDeBusqueda<>();
 
-        System.out.println("Caso 1 (casi completo): " + arbol1.isArbolCasiCompleto());
-        // esperado: true
+        completo.add(8);
+        completo.add(4);
+        completo.add(12);
+        completo.add(2);
+        completo.add(6);
+        completo.add(10);
+        completo.add(14);
 
-
-        // -----------------------------
-        // CASO 2: árbol desequilibrado (DEBE DAR FALSE)
-        // -----------------------------
-        ArbolBinarioDeBusqueda<Integer> arbol2 = new ArbolBinarioDeBusqueda<>();
-
-        arbol2.add(10);
-        arbol2.add(5);
-        arbol2.add(20);
-        arbol2.add(1);
-        arbol2.add(0); // rompe la completitud
-
-        System.out.println("Caso 2 (no casi completo): " + arbol2.isArbolCasiCompleto());
-        // esperado: false
+        System.out.println("\n--- ARBOL COMPLETO PERFECTO ---");
+        System.out.println("InOrden: " + completo.getListaOrdenCentral());
+        System.out.println("Altura: " + completo.getAltura());
+        System.out.println("isCompleto: " + completo.isArbolCompleto()); // true
+        System.out.println("isCasiCompleto: " + completo.isArbolCasiCompleto()); // true
 
 
-        // -----------------------------
-        // CASO 3: árbol vacío (DEBE DAR TRUE)
-        // -----------------------------
-        ArbolBinarioDeBusqueda<Integer> arbol3 = new ArbolBinarioDeBusqueda<>();
+        // =============================
+        // 2. ÁRBOL CASI COMPLETO
+        // =============================
+        ArbolBinarioDeBusqueda<Integer> casi = new ArbolBinarioDeBusqueda<>();
 
-        System.out.println("Caso 3 (vacío): " + arbol3.isArbolCasiCompleto());
-        // esperado: true
+        casi.add(8);
+        casi.add(4);
+        casi.add(12);
+        casi.add(2);
+        casi.add(6);
+        casi.add(10); // falta el 14 → sigue siendo casi completo
+
+        System.out.println("\n--- ARBOL CASI COMPLETO ---");
+        System.out.println("InOrden: " + casi.getListaOrdenCentral());
+        System.out.println("isCompleto: " + casi.isArbolCompleto()); // false
+        System.out.println("isCasiCompleto: " + casi.isArbolCasiCompleto()); // true
 
 
-        // -----------------------------
-        // CASO 4: árbol perfectamente completo (DEBE DAR TRUE)
-        // -----------------------------
-        ArbolBinarioDeBusqueda<Integer> arbol4 = new ArbolBinarioDeBusqueda<>();
+        // =============================
+        // 3. ÁRBOL NO CASI COMPLETO
+        // =============================
+        ArbolBinarioDeBusqueda<Integer> noCasi = new ArbolBinarioDeBusqueda<>();
 
-        arbol4.add(8);
-        arbol4.add(3);
-        arbol4.add(10);
-        arbol4.add(1);
-        arbol4.add(6);
-        arbol4.add(14);
-        arbol4.add(4);
-        arbol4.add(7);
+        noCasi.add(8);
+        noCasi.add(4);
+        noCasi.add(12);
+        noCasi.add(2);
+        noCasi.add(1); // rompe estructura
 
-        System.out.println("Caso 4 (completo perfecto): " + arbol4.isArbolCasiCompleto());
-        // esperado: true
+        System.out.println("\n--- ARBOL NO CASI COMPLETO ---");
+        System.out.println("InOrden: " + noCasi.getListaOrdenCentral());
+        System.out.println("isCasiCompleto: " + noCasi.isArbolCasiCompleto()); // false
+
+
+        // =============================
+        // 4. ÁRBOL VACÍO
+        // =============================
+        ArbolBinarioDeBusqueda<Integer> vacio = new ArbolBinarioDeBusqueda<>();
+
+        System.out.println("\n--- ARBOL VACIO ---");
+        System.out.println("isCompleto: " + vacio.isArbolCompleto()); // true
+        System.out.println("isCasiCompleto: " + vacio.isArbolCasiCompleto()); // true
+
     }
 
 

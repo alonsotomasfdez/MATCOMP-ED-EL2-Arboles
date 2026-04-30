@@ -1,6 +1,6 @@
 package Listas_reutilizadas;
 
-public class ColaLista<T extends Comparable<T>> implements Cola<T> {
+public class ColaLista<T> implements Cola<T> {
 
     private ElementoSE<T> primero;
     private ElementoSE<T> ultimo;
@@ -108,40 +108,6 @@ public class ColaLista<T extends Comparable<T>> implements Cola<T> {
         }
 
         return copia;
-    }
-    @Override
-    public T max() {
-        if (isEmpty()) {
-            return null;
-        }
-
-        T maximo = primero.dato;
-        ElementoSE<T> actual = primero.siguiente;
-
-        while (actual != null) {
-            if (actual.dato.compareTo(maximo) > 0) {
-                maximo = actual.dato;
-            }
-            actual = actual.siguiente;
-        }
-
-        return maximo;
-    }
-    public T min(){
-        if (isEmpty()){
-            return null;
-        }
-
-        T minimo = primero.dato;
-        ElementoSE<T> actual = primero.siguiente;
-
-        while (actual != null){
-            if (actual.dato.compareTo(minimo)<0){
-                minimo = actual.dato;
-            }
-            actual = actual.siguiente;
-        }
-        return minimo;
     }
 
     @Override
