@@ -1,5 +1,12 @@
+import Listas_reutilizadas.Lista;
+import Listas_reutilizadas.ListaSimplementeEnlazada;
+
 public class ArbolBinarioDeBusquedaEnteros
         extends ArbolBinarioDeBusqueda<Enteros> {
+
+    public ArbolBinarioDeBusquedaEnteros() {
+        super();
+    }
 
     public int getSuma() {
         return sumar(getRaiz());
@@ -61,5 +68,50 @@ public class ArbolBinarioDeBusquedaEnteros
 
         return 1 + contar(nodo.getIzquierda())
                 + contar(nodo.getDerecha());
+    }
+
+    @Override
+    public ArbolBinarioDeBusquedaEnteros getSubarbolIzquierda() {
+        if (getRaiz() == null || getRaiz().getIzquierda() == null) {
+            return new ArbolBinarioDeBusquedaEnteros();
+        }
+        return new ArbolBinarioDeBusquedaEnteros(getRaiz().getIzquierda());
+    }
+
+    @Override
+    public ArbolBinarioDeBusquedaEnteros getSubarbolDerecha() {
+        if (getRaiz() == null || getRaiz().getDerecha() == null) {
+            return new ArbolBinarioDeBusquedaEnteros();
+        }
+        return new ArbolBinarioDeBusquedaEnteros(getRaiz().getDerecha());
+    }
+
+    public ArbolBinarioDeBusquedaEnteros(Nodo<Enteros> raiz) {
+        super(raiz);
+    }
+
+    public int getSumaInorden() {
+        return sumarLista(getListaOrdenCentral());
+    }
+
+    public int getSumaPreorden() {
+        return sumarLista(getListaPreOrden());
+    }
+
+    public int getSumaPostorden() {
+        return sumarLista(getListaPostOrden());
+    }
+
+    private int sumarLista(Lista<Enteros> lista) {
+        int suma = 0;
+
+        ListaSimplementeEnlazada<Enteros> l =
+                (ListaSimplementeEnlazada<Enteros>) lista;
+
+        for (int i = 0; i < l.getSize(); i++) {
+            suma += l.get_posicion(i).getValor();
+        }
+
+        return suma;
     }
 }
