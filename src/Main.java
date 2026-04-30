@@ -1,166 +1,79 @@
+import java.util.Random;
 
 public class Main {
+
     public static void main(String[] args) {
 
-        //Prueba add()
-        /*
-        ArbolBinarioDeBusqueda<Integer> arbol1 = new ArbolBinarioDeBusqueda<>();
-        arbol1.add(10);
-        arbol1.add(2);
-        arbol1.add(3);
+        ArbolBinarioDeBusquedaEnteros arbol = new ArbolBinarioDeBusquedaEnteros();
 
-        //System.out.println(nodoraiz.getRaiz().getDato());
-        System.out.println(arbol1.getRaiz().getIzquierda().getDerecha().getDato()); //3
+        // --------------------------------------------------
+        // 1. INSERTAR DATOS ORDENADOS (0..9)
+        // --------------------------------------------------
+        System.out.println("=== INSERCION ORDENADA ===");
 
+        for (int i = 0; i <= 9; i++) {
+            arbol.add(new Enteros(i));
+        }
 
-        //Prueba listas
-        ArbolBinarioDeBusqueda<Integer> arbol2 = new ArbolBinarioDeBusqueda<>();
-        arbol2.add(8);
-        arbol2.add(3);
-        arbol2.add(10);
-        arbol2.add(1);
-        arbol2.add(6);
-        arbol2.add(14);
-        arbol2.add(4);
-        arbol2.add(7);
+        System.out.println("Inorden: " + arbol.getListaOrdenCentral());
+        System.out.println("Preorden: " + arbol.getListaPreOrden());
+        System.out.println("Postorden: " + arbol.getListaPostOrden());
 
-        System.out.println(arbol2.getListaPreOrden());
-        System.out.println(arbol2.getListaPostOrden());
-        System.out.println(arbol2.getListaOrdenCentral());
+        System.out.println("Altura: " + arbol.getAltura());
+        System.out.println("Grado: " + arbol.getGrado());
 
-        //Prueba altura usando arbol2 (que es de altura 4)
-        System.out.println("La altura de arbol2 es "+arbol2.getAltura());
+        System.out.println("Suma: " + arbol.getSuma());
+        System.out.println("Media: " + arbol.getMedia());
+        System.out.println("Max: " + arbol.getMaximo());
+        System.out.println("Min: " + arbol.getMinimo());
 
-        //Prueba camino al 4 en arbol2 (que es [8,3,6,4]
-        System.out.println("El camino para llegar al 4 en arbol2 es "+arbol2.getCamino(4));
+        System.out.println("Completo: " + arbol.isArbolCompleto());
+        System.out.println("Casi completo: " + arbol.isArbolCasiCompleto());
 
-        //Prueba calculo de grado
-        ArbolBinarioDeBusqueda<Integer> arbol3 = new ArbolBinarioDeBusqueda<>();
-        arbol3.add(9);
-        arbol3.add(8);
-        arbol3.add(6);
-        arbol3.add(5);
-        System.out.println("El grado de arbol3 es "+arbol3.getGrado());//Grado 1
-        arbol3.add(7);
-        System.out.println("El grado de arbol3 ahora es "+arbol3.getGrado());//Grado 2
+        System.out.println("Camino a 7: " + arbol.getCamino(new Enteros(7)));
 
-        //Prueba subarboles
-        arbol3.add(10);
-        arbol3.add(11);
-        System.out.println(arbol3.getSubarbolDerecha().getRaiz().getDato());
-        System.out.println(arbol3.getSubarbolIzquierda().getRaiz().getDato());
+        System.out.println("Subárbol izq raíz: " +
+                (arbol.getSubarbolIzquierda().getRaiz() != null
+                        ? arbol.getSubarbolIzquierda().getRaiz().getDato()
+                        : "null"));
 
-        //Prueba getListaNivelDato
-        ArbolBinarioDeBusqueda<Integer> arbol4 = new ArbolBinarioDeBusqueda<>();
-        arbol4.add(19);//Nivel 1
-        arbol4.add(13);//Nivel 2
-        arbol4.add(15);//Nivel 3
-        arbol4.add(5);//Nivel 3
-        arbol4.add(25);//Nivel 2
-        arbol4.add(21);//Nivel 3
-        arbol4.add(30);//Nivel 3
-        System.out.println(arbol4.getListaDatosNivel(2));
-        System.out.println(arbol4.getListaDatosNivel(3));
+        System.out.println("Subárbol der raíz: " +
+                (arbol.getSubarbolDerecha().getRaiz() != null
+                        ? arbol.getSubarbolDerecha().getRaiz().getDato()
+                        : "null"));
 
-        //Prueba homogeneo
-        System.out.println("arbol4 es homogéneo: "+arbol4.isArbolHomogeneo());//True
-        arbol4.add(1);
-        arbol4.add(7);
-        System.out.println("arbol4 es homogéneo: "+arbol4.isArbolHomogeneo());//True
-        arbol4.add(50);
-        System.out.println("arbol4 es homogéneo: "+arbol4.isArbolHomogeneo());//False
+        // --------------------------------------------------
+        // 2. INSERTAR ALEATORIO (REINICIAMOS ARBOL)
+        // --------------------------------------------------
+        System.out.println("\n=== INSERCION ALEATORIA ===");
 
-        //prueba getCamino
-        ArbolBinarioDeBusqueda<Integer> arbol = new ArbolBinarioDeBusqueda<>();
+        arbol = new ArbolBinarioDeBusquedaEnteros();
 
-        arbol.add(8);
-        arbol.add(3);
-        arbol.add(10);
-        arbol.add(1);
-        arbol.add(6);
-        arbol.add(4);
-        arbol.add(7);
+        Random r = new Random(1); // semilla fija para reproducible
+        boolean[] usados = new boolean[10];
 
-        System.out.println("Camino a 4: " + arbol.getCamino(4));
+        int insertados = 0;
+        while (insertados < 10) {
+            int v = r.nextInt(10);
 
-        System.out.println("Camino a 8: " + arbol.getCamino(8));
+            if (!usados[v]) {
+                usados[v] = true;
+                arbol.add(new Enteros(v));
+                insertados++;
+            }
+        }
 
-        System.out.println("Camino a 7: " + arbol.getCamino(7));
+        System.out.println("Inorden: " + arbol.getListaOrdenCentral());
+        System.out.println("Altura: " + arbol.getAltura());
 
-        System.out.println("Camino a 99: " + arbol.getCamino(99));
+        System.out.println("Suma: " + arbol.getSuma());
+        System.out.println("Media: " + arbol.getMedia());
+        System.out.println("Max: " + arbol.getMaximo());
+        System.out.println("Min: " + arbol.getMinimo());
 
-        ArbolBinarioDeBusqueda<Integer> arbolVacio = new ArbolBinarioDeBusqueda<>();
-        System.out.println("Camino en árbol vacío: " + arbolVacio.getCamino(5));
+        System.out.println("Completo: " + arbol.isArbolCompleto());
+        System.out.println("Casi completo: " + arbol.isArbolCasiCompleto());
 
-
-         */
-        // isArbolCompleto
-        System.out.println("===== TEST ARBOLES =====");
-
-        // =============================
-        // 1. ÁRBOL COMPLETO PERFECTO
-        // =============================
-        ArbolBinarioDeBusqueda<Integer> completo = new ArbolBinarioDeBusqueda<>();
-
-        completo.add(8);
-        completo.add(4);
-        completo.add(12);
-        completo.add(2);
-        completo.add(6);
-        completo.add(10);
-        completo.add(14);
-
-        System.out.println("\n--- ARBOL COMPLETO PERFECTO ---");
-        System.out.println("InOrden: " + completo.getListaOrdenCentral());
-        System.out.println("Altura: " + completo.getAltura());
-        System.out.println("isCompleto: " + completo.isArbolCompleto()); // true
-        System.out.println("isCasiCompleto: " + completo.isArbolCasiCompleto()); // true
-
-
-        // =============================
-        // 2. ÁRBOL CASI COMPLETO
-        // =============================
-        ArbolBinarioDeBusqueda<Integer> casi = new ArbolBinarioDeBusqueda<>();
-
-        casi.add(8);
-        casi.add(4);
-        casi.add(12);
-        casi.add(2);
-        casi.add(6);
-        casi.add(10); // falta el 14 → sigue siendo casi completo
-
-        System.out.println("\n--- ARBOL CASI COMPLETO ---");
-        System.out.println("InOrden: " + casi.getListaOrdenCentral());
-        System.out.println("isCompleto: " + casi.isArbolCompleto()); // false
-        System.out.println("isCasiCompleto: " + casi.isArbolCasiCompleto()); // true
-
-
-        // =============================
-        // 3. ÁRBOL NO CASI COMPLETO
-        // =============================
-        ArbolBinarioDeBusqueda<Integer> noCasi = new ArbolBinarioDeBusqueda<>();
-
-        noCasi.add(8);
-        noCasi.add(4);
-        noCasi.add(12);
-        noCasi.add(2);
-        noCasi.add(1); // rompe estructura
-
-        System.out.println("\n--- ARBOL NO CASI COMPLETO ---");
-        System.out.println("InOrden: " + noCasi.getListaOrdenCentral());
-        System.out.println("isCasiCompleto: " + noCasi.isArbolCasiCompleto()); // false
-
-
-        // =============================
-        // 4. ÁRBOL VACÍO
-        // =============================
-        ArbolBinarioDeBusqueda<Integer> vacio = new ArbolBinarioDeBusqueda<>();
-
-        System.out.println("\n--- ARBOL VACIO ---");
-        System.out.println("isCompleto: " + vacio.isArbolCompleto()); // true
-        System.out.println("isCasiCompleto: " + vacio.isArbolCasiCompleto()); // true
-
+        System.out.println("Camino a 7: " + arbol.getCamino(new Enteros(7)));
     }
-
-
 }

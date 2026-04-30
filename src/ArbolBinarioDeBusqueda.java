@@ -123,27 +123,9 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 
         if (raiz == null) return true;
 
-        Cola<Nodo<T>> cola = new ColaLista<>();
-        cola.enqueue(raiz);
+        int altura = getAltura();
 
-        boolean encontradoNull = false;
-
-        while (!cola.isEmpty()) {
-
-            Nodo<T> actual = cola.dequeue();
-
-            if (actual == null) {
-                encontradoNull = true;
-            } else {
-
-                if (encontradoNull) return false;
-
-                cola.enqueue(actual.getIzquierda());
-                cola.enqueue(actual.getDerecha());
-            }
-        }
-
-        return true;
+        return raiz.comprobarCompleto(altura, 0);
     }
 
     public boolean isArbolCasiCompleto() {
