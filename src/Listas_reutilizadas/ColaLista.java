@@ -82,7 +82,7 @@ public class ColaLista<T extends Comparable<T>> implements Cola<T> {
         ElementoSE<T> actual = primero;
 
         while (actual != null) {
-            if (actual.dato.compareTo(dato) == 0) {
+            if (actual.dato.equals(dato)) {
                 return true;
             }
             actual = actual.siguiente;
@@ -150,7 +150,7 @@ public class ColaLista<T extends Comparable<T>> implements Cola<T> {
         ElementoSE<T> actual = primero;
 
         while (actual != null) {
-            if (actual.dato.compareTo(dato) == 0) {
+            if (actual.dato.equals(dato)) {
                 contador++;
             }
             actual = actual.siguiente;

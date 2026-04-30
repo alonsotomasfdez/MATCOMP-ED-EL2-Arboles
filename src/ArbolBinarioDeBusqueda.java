@@ -1,5 +1,7 @@
 import Listas_reutilizadas.Lista;
 import Listas_reutilizadas.ListaSimplementeEnlazada;
+import Listas_reutilizadas.Cola;
+import Listas_reutilizadas.ColaLista;
 
 
 public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
@@ -119,12 +121,66 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 
     public boolean isArbolCompleto() {
 
-        if (this.raiz == null) {
-            return true;
+        if (raiz == null) return true;
+
+        Cola<Nodo<T>> cola = new ColaLista<>();
+        cola.enqueue(raiz);
+
+        boolean encontradoNull = false;
+
+        while (!cola.isEmpty()) {
+
+            Nodo<T> actual = cola.dequeue();
+
+            if (actual == null) {
+                encontradoNull = true;
+            } else {
+
+                if (encontradoNull) return false;
+
+                cola.enqueue(actual.getIzquierda());
+                cola.enqueue(actual.getDerecha());
+            }
         }
 
-        int altura = this.getAltura();
+        return true;
+    }
 
-        return this.raiz.comprobarCompleto(altura, 0);
+    public boolean isArbolCasiCompleto() {
+
+        if (raiz == null) return true;
+
+        Cola<Nodo<T>> cola = new ColaLista<>();
+        cola.enqueue(raiz);
+
+        boolean finNivel = false;
+
+        while (!cola.isEmpty()) {
+
+            Nodo<T> actual = cola.dequeue();
+
+            Nodo<T> izq = actual.getIzquierda();
+            Nodo<T> der = actual.getDerecha();
+
+            if (izq != null) {
+
+                if (finNivel) return false;
+                cola.enqueue(izq);
+
+            } else {
+                finNivel = true;
+            }
+
+            if (der != null) {
+
+                if (finNivel) return false;
+                cola.enqueue(der);
+
+            } else {
+                finNivel = true;
+            }
+        }
+
+        return true;
     }
 }

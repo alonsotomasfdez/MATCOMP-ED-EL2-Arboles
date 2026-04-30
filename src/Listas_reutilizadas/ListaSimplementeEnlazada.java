@@ -1,6 +1,6 @@
 package Listas_reutilizadas;
 
-public class ListaSimplementeEnlazada<T extends Comparable<T>> implements Lista<T> {
+public class ListaSimplementeEnlazada<T> implements Lista<T> {
 
     private ElementoSE<T> primero;
     private int size;
@@ -179,7 +179,7 @@ public class ListaSimplementeEnlazada<T extends Comparable<T>> implements Lista<
         ElementoSE<T> actual = primero;
 
         while (actual != null){
-            if (actual.dato.compareTo(dato) == 0){
+            if (actual.dato.equals(dato)){
                 return true;
             }
             actual = actual.siguiente;
@@ -194,7 +194,7 @@ public class ListaSimplementeEnlazada<T extends Comparable<T>> implements Lista<
 
         while (actual != null) {
 
-            if (actual.dato.compareTo(dato) == 0) {
+            if (actual.dato.equals(dato)) {
                 return i;
             }
 
@@ -252,7 +252,7 @@ public class ListaSimplementeEnlazada<T extends Comparable<T>> implements Lista<
 
             while (buscador != null) {
 
-                if (buscador.dato.compareTo(actual.dato) == 0) {//Comprueba si es duplicado
+                if (buscador.dato.equals(actual.dato)) {//Comprueba si es duplicado
 
                     anterior.siguiente = buscador.siguiente;//Elimina el nodo duplicado
                     size--;//Actualiza el tamaño
