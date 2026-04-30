@@ -123,9 +123,27 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
 
         if (raiz == null) return true;
 
-        int altura = getAltura();
+        Cola<Nodo<T>> cola = new ColaLista<>();
+        cola.enqueue(raiz);
 
-        return raiz.comprobarCompleto(altura, 0);
+        boolean nullEncontrado = false;
+
+        while (!cola.isEmpty()) {
+
+            Nodo<T> actual = cola.dequeue();
+
+            if (actual == null) {
+                nullEncontrado = true;
+            } else {
+
+                if (nullEncontrado) return false;
+
+                cola.enqueue(actual.getIzquierda());
+                cola.enqueue(actual.getDerecha());
+            }
+        }
+
+        return true;
     }
 
     public boolean isArbolCasiCompleto() {
@@ -135,32 +153,21 @@ public class ArbolBinarioDeBusqueda<T extends Comparable<T>> {
         Cola<Nodo<T>> cola = new ColaLista<>();
         cola.enqueue(raiz);
 
-        boolean finNivel = false;
+        boolean encontradoHueco = false;
 
         while (!cola.isEmpty()) {
 
             Nodo<T> actual = cola.dequeue();
 
-            Nodo<T> izq = actual.getIzquierda();
-            Nodo<T> der = actual.getDerecha();
-
-            if (izq != null) {
-
-                if (finNivel) return false;
-                cola.enqueue(izq);
-
-            } else {
-                finNivel = true;
+            if (actual == null) {
+                encontradoHueco = true;
+                continue;
             }
 
-            if (der != null) {
+            if (encontradoHueco) return false;
 
-                if (finNivel) return false;
-                cola.enqueue(der);
-
-            } else {
-                finNivel = true;
-            }
+            cola.enqueue(actual.getIzquierda());
+            cola.enqueue(actual.getDerecha());
         }
 
         return true;
