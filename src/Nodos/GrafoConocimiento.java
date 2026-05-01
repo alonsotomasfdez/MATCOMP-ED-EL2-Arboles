@@ -246,12 +246,13 @@ public class GrafoConocimiento {
         }
     }
 
-    private String extraerValorJson(String linea) {
-        String[] partes = linea.split(": ", 2);//Divide la línea en dos partes, usando como separador ": "
-        String valor = partes[1];//Nos quedamos con la segunda parte del texto.
+    private String extraerValorJson(String linea) {// Metodo más robusto para extraer el valor del JSON sin depender del formato exacto de espacios
+        int posicionDosPuntos = linea.indexOf(":");
+        String valor = linea.substring(posicionDosPuntos + 1);
 
-        valor = valor.replace(",", "");//quitas la coma del final
-        valor = valor.replace("\"", "");//quitas comillas dobles
+        valor = valor.replace(",", "");
+        valor = valor.replace("\"", "");
+        valor = valor.trim();
 
         return valor;
     }
