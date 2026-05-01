@@ -1,3 +1,5 @@
+package ParteA_ArbolBinario;
+
 public class Enteros implements Comparable<Enteros> {
 
     private int valor;
@@ -16,7 +18,7 @@ public class Enteros implements Comparable<Enteros> {
         return Integer.compare(this.valor, otro.valor);
     }
 
-    // Permite sumar dos objetos Enteros
+    // Permite sumar dos objetos ParteA_ArbolBinario.Enteros
     public Enteros sumar(Enteros otro) {
         return new Enteros(this.valor + otro.valor);
     }

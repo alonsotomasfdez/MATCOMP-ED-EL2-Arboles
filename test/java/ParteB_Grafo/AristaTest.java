@@ -1,4 +1,4 @@
-package Nodos;
+package ParteB_Grafo;
 
 import org.junit.jupiter.api.Test;
 

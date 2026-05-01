@@ -1,4 +1,8 @@
+package ParteA_ArbolBinario;
+
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ArbolBinarioDeBusquedaTest {
@@ -14,7 +18,7 @@ class ArbolBinarioDeBusquedaTest {
     @Test
     void getRaiz() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbolOrdenado();
-        assertEquals(0, arbol.getRaiz().getDato().getValor());
+        Assertions.assertEquals(0, arbol.getRaiz().getDato().getValor());
     }
 
     @Test
@@ -28,45 +32,45 @@ class ArbolBinarioDeBusquedaTest {
     void getListaPreOrden() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbolOrdenado();
         assertNotNull(arbol.getListaPreOrden());
-        assertEquals(6, arbol.getListaPreOrden().getSize());
+        Assertions.assertEquals(6, arbol.getListaPreOrden().getSize());
     }
 
     @Test
     void getListaPostOrden() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbolOrdenado();
         assertNotNull(arbol.getListaPostOrden());
-        assertEquals(6, arbol.getListaPostOrden().getSize());
+        Assertions.assertEquals(6, arbol.getListaPostOrden().getSize());
     }
 
     @Test
     void getListaOrdenCentral() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbolOrdenado();
         assertNotNull(arbol.getListaOrdenCentral());
-        assertEquals(6, arbol.getListaOrdenCentral().getSize());
+        Assertions.assertEquals(6, arbol.getListaOrdenCentral().getSize());
     }
 
     @Test
     void getAltura() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbolOrdenado();
-        assertEquals(5, arbol.getAltura()); // árbol degenerado
+        Assertions.assertEquals(5, arbol.getAltura()); // árbol degenerado
     }
 
     @Test
     void getCamino() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbolOrdenado();
-        assertEquals(6, arbol.getCamino(new Enteros(5)).getSize());
+        Assertions.assertEquals(6, arbol.getCamino(new Enteros(5)).getSize());
     }
 
     @Test
     void getGrado() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbolOrdenado();
-        assertEquals(1, arbol.getGrado());
+        Assertions.assertEquals(1, arbol.getGrado());
     }
 
     @Test
     void getSubarbolIzquierda() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbolOrdenado();
-        assertEquals(0, arbol.getSubarbolIzquierda().getSuma());
+        Assertions.assertEquals(0, arbol.getSubarbolIzquierda().getSuma());
     }
 
     @Test
@@ -78,24 +82,24 @@ class ArbolBinarioDeBusquedaTest {
     @Test
     void getListaDatosNivel() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbolOrdenado();
-        assertEquals(1, arbol.getListaDatosNivel(0).getSize());
+        Assertions.assertEquals(1, arbol.getListaDatosNivel(0).getSize());
     }
 
     @Test
     void isArbolHomogeneo() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbolOrdenado();
-        assertFalse(arbol.isArbolHomogeneo());
+        Assertions.assertFalse(arbol.isArbolHomogeneo());
     }
 
     @Test
     void isArbolCompleto() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbolOrdenado();
-        assertFalse(arbol.isArbolCompleto());
+        Assertions.assertFalse(arbol.isArbolCompleto());
     }
 
     @Test
     void isArbolCasiCompleto() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbolOrdenado();
-        assertFalse(arbol.isArbolCasiCompleto());
+        Assertions.assertFalse(arbol.isArbolCasiCompleto());
     }
 }

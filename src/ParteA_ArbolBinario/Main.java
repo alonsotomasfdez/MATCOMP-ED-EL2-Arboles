@@ -1,3 +1,5 @@
+package ParteA_ArbolBinario;
+
 import java.util.Random;
 
 public class Main {

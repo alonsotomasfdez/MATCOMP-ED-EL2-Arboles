@@ -1,4 +1,4 @@
-package Nodos;
+package ParteB_Grafo;
 
 public class Arista implements Comparable<Arista> {
 

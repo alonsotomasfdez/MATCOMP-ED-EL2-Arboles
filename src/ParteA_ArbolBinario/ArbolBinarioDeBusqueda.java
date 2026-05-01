@@ -1,3 +1,5 @@
+package ParteA_ArbolBinario;
+
 import Listas_reutilizadas.Lista;
 import Listas_reutilizadas.ListaSimplementeEnlazada;
 import Listas_reutilizadas.Cola;

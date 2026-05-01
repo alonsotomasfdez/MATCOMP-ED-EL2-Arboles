@@ -1,4 +1,4 @@
-package Nodos;
+package ParteB_Grafo;
 import Listas_reutilizadas.ListaSimplementeEnlazada;
 import Listas_reutilizadas.MiIterador;
 import Listas_reutilizadas.PilaLista;

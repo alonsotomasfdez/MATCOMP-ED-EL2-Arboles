@@ -1,5 +1,8 @@
+package ParteA_ArbolBinario;
+
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import Listas_reutilizadas.Lista;
 import Listas_reutilizadas.ListaSimplementeEnlazada;
@@ -16,7 +19,7 @@ class NodoTest {
     @Test
     void getDato() {
         Nodo<Enteros> nodo = new Nodo<>(new Enteros(5));
-        assertEquals(5, nodo.getDato().getValor());
+        Assertions.assertEquals(5, nodo.getDato().getValor());
     }
 
     @Test
@@ -37,8 +40,8 @@ class NodoTest {
         nodo.addRecursivo(new Enteros(1));
         nodo.addRecursivo(new Enteros(3));
 
-        assertEquals(1, nodo.getIzquierda().getDato().getValor());
-        assertEquals(3, nodo.getDerecha().getDato().getValor());
+        Assertions.assertEquals(1, nodo.getIzquierda().getDato().getValor());
+        Assertions.assertEquals(3, nodo.getDerecha().getDato().getValor());
     }
 
     @Test
@@ -71,15 +74,15 @@ class NodoTest {
         assertEquals(3, lista.getSize());
         // Comprobamos que está ordenado
         ListaSimplementeEnlazada<Enteros> l = (ListaSimplementeEnlazada<Enteros>) lista;
-        assertEquals(1, l.get_posicion(0).getValor());
-        assertEquals(2, l.get_posicion(1).getValor());
-        assertEquals(3, l.get_posicion(2).getValor());
+        Assertions.assertEquals(1, l.get_posicion(0).getValor());
+        Assertions.assertEquals(2, l.get_posicion(1).getValor());
+        Assertions.assertEquals(3, l.get_posicion(2).getValor());
     }
 
     @Test
     void calcularAltura() {
         Nodo<Enteros> nodo = crearNodoBasico();
-        assertEquals(1, nodo.calcularAltura());
+        Assertions.assertEquals(1, nodo.calcularAltura());
     }
 
     @Test
@@ -96,7 +99,7 @@ class NodoTest {
     @Test
     void calcularGrado() {
         Nodo<Enteros> nodo = crearNodoBasico();
-        assertEquals(2, nodo.calcularGrado());
+        Assertions.assertEquals(2, nodo.calcularGrado());
     }
 
     @Test
@@ -112,7 +115,7 @@ class NodoTest {
     @Test
     void comprobarHomogeneo() {
         Nodo<Enteros> nodo = crearNodoBasico();
-        assertTrue(nodo.comprobarHomogeneo());
+        Assertions.assertTrue(nodo.comprobarHomogeneo());
     }
 
     @Test
@@ -120,6 +123,6 @@ class NodoTest {
         Nodo<Enteros> nodo = crearNodoBasico();
         int altura = nodo.calcularAltura();
 
-        assertTrue(nodo.comprobarCompleto(altura, 0));
+        Assertions.assertTrue(nodo.comprobarCompleto(altura, 0));
     }
 }

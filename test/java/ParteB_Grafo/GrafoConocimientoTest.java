@@ -1,4 +1,4 @@
-package Nodos;
+package ParteB_Grafo;
 
 import Listas_reutilizadas.ListaSimplementeEnlazada;
 import org.junit.jupiter.api.Test;

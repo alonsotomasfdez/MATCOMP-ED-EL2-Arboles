@@ -1,4 +1,4 @@
-package Nodos;
+package ParteB_Grafo;
 
 public class NodoGrafo implements Comparable<NodoGrafo> {
 

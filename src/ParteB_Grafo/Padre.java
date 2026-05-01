@@ -1,4 +1,4 @@
-package Nodos;
+package ParteB_Grafo;
 
 public class Padre implements Comparable<Padre> {
 

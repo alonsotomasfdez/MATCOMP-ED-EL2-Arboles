@@ -1,4 +1,6 @@
-import static org.junit.jupiter.api.Assertions.*;
+package ParteA_ArbolBinario;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ArbolBinarioDeBusquedaEnterosTest {
@@ -14,54 +16,54 @@ class ArbolBinarioDeBusquedaEnterosTest {
     @Test
     void getSuma() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbol();
-        assertEquals(6, arbol.getSuma());
+        Assertions.assertEquals(6, arbol.getSuma());
     }
 
     @Test
     void getMaximo() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbol();
-        assertEquals(3, arbol.getMaximo());
+        Assertions.assertEquals(3, arbol.getMaximo());
     }
 
     @Test
     void getMinimo() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbol();
-        assertEquals(1, arbol.getMinimo());
+        Assertions.assertEquals(1, arbol.getMinimo());
     }
 
     @Test
     void getMedia() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbol();
-        assertEquals(2.0, arbol.getMedia());
+        Assertions.assertEquals(2.0, arbol.getMedia());
     }
 
     @Test
     void getSubarbolIzquierda() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbol();
-        assertEquals(1, arbol.getSubarbolIzquierda().getSuma());
+        Assertions.assertEquals(1, arbol.getSubarbolIzquierda().getSuma());
     }
 
     @Test
     void getSubarbolDerecha() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbol();
-        assertEquals(3, arbol.getSubarbolDerecha().getSuma());
+        Assertions.assertEquals(3, arbol.getSubarbolDerecha().getSuma());
     }
 
     @Test
     void getSumaInorden() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbol();
-        assertEquals(6, arbol.getSumaInorden());
+        Assertions.assertEquals(6, arbol.getSumaInorden());
     }
 
     @Test
     void getSumaPreorden() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbol();
-        assertEquals(6, arbol.getSumaPreorden());
+        Assertions.assertEquals(6, arbol.getSumaPreorden());
     }
 
     @Test
     void getSumaPostorden() {
         ArbolBinarioDeBusquedaEnteros arbol = crearArbol();
-        assertEquals(6, arbol.getSumaPostorden());
+        Assertions.assertEquals(6, arbol.getSumaPostorden());
     }
 }

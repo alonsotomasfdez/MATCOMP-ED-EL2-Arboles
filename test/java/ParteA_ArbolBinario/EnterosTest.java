@@ -1,4 +1,8 @@
+package ParteA_ArbolBinario;
+
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class EnterosTest {
@@ -6,7 +10,7 @@ class EnterosTest {
     @Test
     void getValor() {
         Enteros e = new Enteros(10);
-        assertEquals(10, e.getValor());
+        Assertions.assertEquals(10, e.getValor());
     }
 
     @Test
@@ -17,7 +21,7 @@ class EnterosTest {
 
         assertTrue(a.compareTo(b) < 0);
         assertTrue(b.compareTo(a) > 0);
-        assertEquals(0, a.compareTo(c));
+        Assertions.assertEquals(0, a.compareTo(c));
     }
 
     @Test
@@ -27,12 +31,12 @@ class EnterosTest {
 
         Enteros resultado = a.sumar(b);
 
-        assertEquals(10, resultado.getValor());
+        Assertions.assertEquals(10, resultado.getValor());
     }
 
     @Test
     void testToString() {
         Enteros e = new Enteros(42);
-        assertEquals("42", e.toString());
+        Assertions.assertEquals("42", e.toString());
     }
 }
