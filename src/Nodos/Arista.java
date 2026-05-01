@@ -30,6 +30,18 @@ public class Arista implements Comparable<Arista> {
 
         return this.etiqueta.compareTo(otra.etiqueta);
     }
+    @Override
+    public boolean equals(Object objeto) { // Sobrescribimos equals para poder detectar aristas duplicadas correctamente al usar contains
+        if (objeto instanceof Arista) {
+            Arista otra = (Arista) objeto;
+
+            return this.origen.equals(otra.origen)
+                    && this.destino.equals(otra.destino)
+                    && this.etiqueta.equals(otra.etiqueta);
+        }
+
+        return false;
+    }
     public String getEtiqueta() {
         return etiqueta;
     }
